@@ -1,0 +1,17 @@
+{
+  "discord.lowerDetailsEditing": "Helios | Agent Backend",
+  "files.exclude": {
+    ".idea": true,
+    "**/.venv": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    ".ruff_cache": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always"
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
+}
