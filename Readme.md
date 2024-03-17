@@ -1,6 +1,8 @@
-# Helios Shield (codename) | Backend
+# Helios | Agent Backend
 
 ## Installation
+
+> FastAPI
 
 ```bash
 python -m venv .venv
@@ -8,8 +10,12 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Run
+> Wireguard
 
-```bash
-uvicorn main:app --reload
+```bash 
+sudo apt update && sudo apt upgrade -y
+. ./scripts/setup_wireguard.sh
+
+# test add peer
+. ./scripts/add_peer.sh 10.0.0.2
 ```
