@@ -14,7 +14,7 @@ class Data(BaseModel):
 async def get_available_ip(used_ips: list[ipaddress.IPv4Address]) -> Response[Data]:
     async def inner():
         subnet = ipaddress.ip_network(ENV.WIREGUARD_CLIENT_SUBNET)
-        available_ips = list(subnet.hosts())
+        available_ips = list(subnet.hosts())[1:]  # exclude wireguard address
         if len(available_ips) == len(used_ips):
             raise ValueError("No available IP addresses")
         for ip in available_ips:
