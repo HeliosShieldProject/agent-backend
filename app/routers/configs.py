@@ -12,4 +12,6 @@ async def create_config(body: CreateConfigRequest) -> CreateConfigResponse:
         raise HTTPException(status_code=304, detail=ip_response.error.value)
 
     peer_response = await add_peer(ip_response.data.ip)
+    if not peer_response.data:
+        raise HTTPException(status_code=304, detail=peer_response.error.value)
     return CreateConfigResponse(userIp=ip_response.data.ip, publicKey=peer_response.data.public_key)
