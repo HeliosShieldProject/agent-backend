@@ -13,8 +13,8 @@ class Data(BaseModel):
 
 async def add_peer(ip: ipaddress.IPv4Address) -> Response[Data]:
     async def inner():
-        public_key = subprocess.run("sh", "./scripts/add_peer.sh", ip, capture_output=True, text=True).strip()
-        assert public_key is None
+        public_key = subprocess.run(["sh", "./scripts/add_peer.sh", str(ip)], capture_output=True, text=True).stdout.strip()
+        assert public_key is not None
         return Response(data=Data(public_key=public_key))
 
     try:
