@@ -8,14 +8,14 @@ from app.dto.service_response import Response
 
 
 class Data(BaseModel):
-    public_key: str
+    private_key: str
 
 
 async def add_peer(ip: ipaddress.IPv4Address) -> Response[Data]:
     async def inner():
-        public_key = subprocess.run(["sh", "./scripts/add_peer.sh", str(ip)], capture_output=True, text=True).stdout.strip()
-        assert public_key is not None
-        return Response(data=Data(public_key=public_key))
+        private_key = subprocess.run(["sh", "./scripts/add_peer.sh", str(ip)], capture_output=True, text=True).stdout.strip()
+        assert private_key is not None
+        return Response(data=Data(private_key=private_key))
 
     try:
         return await inner()
