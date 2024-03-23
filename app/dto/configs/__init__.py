@@ -1,2 +1,1 @@
-from .create_config_request import CreateConfigRequest
 from .create_config_response import CreateConfigResponse
